@@ -19,6 +19,6 @@ class Comment(CommentIn):
 
 
 class UserPostWithComments(BaseModel):
-    psot: UserPost
+    post: UserPost
     comments: list[Comment]
 
