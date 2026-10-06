@@ -1,11 +1,15 @@
+import os
 from typing import Generator, AsyncGenerator
 import pytest
 
 from fastapi.testclient import TestClient
-import httpx
+from httpx import AsyncClient
 
-from socmedAPI.main import app
 from socmedAPI.routers.post import post_table, comment_table
+
+os.environ["ENV_STATE"] = "test"
+
+from socmedAPI.main import app #noqa: E402
 
 @pytest.fixture(scope="session")
 def anyio_backend():
