@@ -25,7 +25,7 @@ async def test_create_post(async_client: AsyncClient):
 
     response = await async_client.post("/post", json={"body": body})
     assert response.status_code == 201
-    assert {"id": 0, "body": body}.items() <= response.json().items()
+    assert {"id": 1, "body": body}.items() <= response.json().items()
 
 
 @pytest.mark.anyio
@@ -49,7 +49,7 @@ async def test_create_comment(async_client: AsyncClient, created_post: dict):
 
     response = await async_client.post("/comment", json={"body": body, "post_id": created_post["id"]})
     assert response.status_code == 201
-    assert {"id": 0, "body": body, "post_id": created_post["id"]}.items() <= response.json().items()
+    assert {"id": 1, "body": body, "post_id": created_post["id"]}.items() <= response.json().items()
 
 
 @pytest.mark.anyio

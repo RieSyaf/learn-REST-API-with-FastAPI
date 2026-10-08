@@ -25,6 +25,8 @@ class TestConfig(GlobalSettings):
     model_config = SettingsConfigDict(env_prefix="TEST_", extra="ignore")
 
 
+
+
 @lru_cache()
 def get_config(env_state: str):
     configs = {

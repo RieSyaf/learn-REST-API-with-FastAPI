@@ -1,32 +1,36 @@
 import os
 from typing import Generator, AsyncGenerator
 import pytest
+import anyio
 
 from fastapi.testclient import TestClient
-from httpx import AsyncClient
-
-from socmedAPI.routers.post import post_table, comment_table
+import httpx
 
 os.environ["ENV_STATE"] = "test"
 
-from socmedAPI.main import app #noqa: E402
+from socmedAPI.database import database, post_table, comment_table
+from socmedAPI.main import app
+
 
 @pytest.fixture(scope="session")
 def anyio_backend():
     return "asyncio"
 
+
 @pytest.fixture()
 def client() -> Generator:
     yield TestClient(app)
 
+
 @pytest.fixture(autouse=True)
 def db() -> Generator:
-    post_table.clear()
-    comment_table.clear()
+    async def clear_db():
+        await database.execute(post_table.delete())
+        await database.execute(comment_table.delete())
+    
+    anyio.run(clear_db)
     yield
-    post_table.clear()
-    comment_table.clear()
-
+    anyio.run(clear_db)
 
 
 @pytest.fixture()
