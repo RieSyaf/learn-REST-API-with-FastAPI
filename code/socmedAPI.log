@@ -1,0 +1,150 @@
+[-]2026-10-09 10:55:52 - socmedAPI.main:19 - INFO     - Starting up the application...
+[-]2026-10-09 10:55:52 - uvicorn.error:62 - INFO     - Application startup complete.
+[-]2026-10-09 10:56:59 - socmedAPI.routers.post:34 - INFO     - Fetching all posts
+[-]2026-10-09 10:56:59 - socmedAPI.routers.post:36 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts
+[-]2026-10-09 10:56:59 - uvicorn.access:482 - INFO     - 127.0.0.1:63920 - "GET /post HTTP/1.1" 200
+[-]2026-10-09 10:57:12 - socmedAPI.routers.post:34 - INFO     - Fetching all posts
+[-]2026-10-09 10:57:12 - socmedAPI.routers.post:36 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts
+[-]2026-10-09 10:57:12 - uvicorn.access:482 - INFO     - 127.0.0.1:56278 - "GET /post HTTP/1.1" 200
+[-]2026-10-09 10:57:13 - socmedAPI.routers.post:34 - INFO     - Fetching all posts
+[-]2026-10-09 10:57:13 - socmedAPI.routers.post:36 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts
+[-]2026-10-09 10:57:13 - uvicorn.access:482 - INFO     - 127.0.0.1:56278 - "GET /post HTTP/1.1" 200
+[-]2026-10-09 10:57:13 - socmedAPI.routers.post:34 - INFO     - Fetching all posts
+[-]2026-10-09 10:57:13 - socmedAPI.routers.post:36 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts
+[-]2026-10-09 10:57:13 - uvicorn.access:482 - INFO     - 127.0.0.1:56278 - "GET /post HTTP/1.1" 200
+[-]2026-10-09 10:57:13 - socmedAPI.routers.post:34 - INFO     - Fetching all posts
+[-]2026-10-09 10:57:13 - socmedAPI.routers.post:36 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts
+[-]2026-10-09 10:57:13 - uvicorn.access:482 - INFO     - 127.0.0.1:56278 - "GET /post HTTP/1.1" 200
+[-]2026-10-09 10:57:35 - uvicorn.access:482 - INFO     - 127.0.0.1:58842 - "POST /post HTTP/1.1" 201
+[-]2026-10-09 10:57:37 - uvicorn.access:482 - INFO     - 127.0.0.1:58842 - "POST /post HTTP/1.1" 201
+[-]2026-10-09 10:57:44 - socmedAPI.routers.post:34 - INFO     - Fetching all posts
+[-]2026-10-09 10:57:44 - socmedAPI.routers.post:36 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts
+[-]2026-10-09 10:57:44 - uvicorn.access:482 - INFO     - 127.0.0.1:56267 - "GET /post HTTP/1.1" 200
+[-]2026-10-09 10:58:37 - uvicorn.error:282 - INFO     - Shutting down
+[-]2026-10-09 10:58:37 - uvicorn.error:67 - INFO     - Waiting for application shutdown.
+[-]2026-10-09 10:58:37 - uvicorn.error:76 - INFO     - Application shutdown complete.
+[-]2026-10-09 10:58:37 - uvicorn.error:113 - INFO     - Finished server process [7068]
+[-]2026-10-09 10:58:46 - socmedAPI.main:19 - INFO     - Starting up the application...
+[-]2026-10-09 10:58:46 - uvicorn.error:62 - INFO     - Application startup complete.
+[-]2026-10-09 10:58:47 - uvicorn.access:482 - INFO     - 127.0.0.1:53918 - "GET /docs HTTP/1.1" 200
+[-]2026-10-09 10:58:48 - uvicorn.access:482 - INFO     - 127.0.0.1:53918 - "GET /openapi.json HTTP/1.1" 200
+[-]2026-10-09 10:58:52 - socmedAPI.routers.post:34 - INFO     - Fetching all posts
+[-]2026-10-09 10:58:52 - socmedAPI.routers.post:36 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts
+[-]2026-10-09 10:58:52 - uvicorn.access:482 - INFO     - 127.0.0.1:53918 - "GET /post HTTP/1.1" 200
+[-]2026-10-09 10:58:54 - socmedAPI.routers.post:34 - INFO     - Fetching all posts
+[-]2026-10-09 10:58:54 - socmedAPI.routers.post:36 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts
+[-]2026-10-09 10:58:54 - uvicorn.access:482 - INFO     - 127.0.0.1:53918 - "GET /post HTTP/1.1" 200
+[-]2026-10-09 11:01:12 - uvicorn.error:282 - INFO     - Shutting down
+[-]2026-10-09 11:01:12 - uvicorn.error:67 - INFO     - Waiting for application shutdown.
+[-]2026-10-09 11:01:12 - uvicorn.error:76 - INFO     - Application shutdown complete.
+[-]2026-10-09 11:01:12 - uvicorn.error:113 - INFO     - Finished server process [21808]
+[-]2026-10-09 11:01:14 - socmedAPI.main:19 - INFO     - Starting up the application...
+[-]2026-10-09 11:01:14 - uvicorn.error:62 - INFO     - Application startup complete.
+[be916ec5]2026-10-09 11:01:32 - socmedAPI.routers.post:34 - INFO     - Fetching all posts
+[be916ec5]2026-10-09 11:01:32 - socmedAPI.routers.post:36 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts
+[be916ec5]2026-10-09 11:01:32 - uvicorn.access:482 - INFO     - 127.0.0.1:57137 - "GET /post HTTP/1.1" 200
+[e406b9cc]2026-10-09 11:01:43 - socmedAPI.routers.post:18 - DEBUG    - Finding post with ID: 2
+[e406b9cc]2026-10-09 11:01:43 - socmedAPI.routers.post:20 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts 
+WHERE posts.id = :id_1
+[e406b9cc]2026-10-09 11:01:43 - socmedAPI.routers.post:53 - INFO     - Fetching comments for post ID: 2
+[e406b9cc]2026-10-09 11:01:43 - socmedAPI.routers.post:18 - DEBUG    - Finding post with ID: 2
+[e406b9cc]2026-10-09 11:01:43 - socmedAPI.routers.post:20 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts 
+WHERE posts.id = :id_1
+[e406b9cc]2026-10-09 11:01:43 - socmedAPI.routers.post:59 - DEBUG    - SELECT comments.id, comments.body, comments.post_id 
+FROM comments 
+WHERE comments.post_id = :post_id_1
+[e406b9cc]2026-10-09 11:01:43 - uvicorn.access:482 - INFO     - 127.0.0.1:54707 - "GET /post/2 HTTP/1.1" 200
+[d1b1bc9d]2026-10-09 11:01:47 - socmedAPI.routers.post:18 - DEBUG    - Finding post with ID: 1
+[d1b1bc9d]2026-10-09 11:01:47 - socmedAPI.routers.post:20 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts 
+WHERE posts.id = :id_1
+[d1b1bc9d]2026-10-09 11:01:47 - socmedAPI.routers.post:53 - INFO     - Fetching comments for post ID: 1
+[d1b1bc9d]2026-10-09 11:01:47 - socmedAPI.routers.post:18 - DEBUG    - Finding post with ID: 1
+[d1b1bc9d]2026-10-09 11:01:47 - socmedAPI.routers.post:20 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts 
+WHERE posts.id = :id_1
+[d1b1bc9d]2026-10-09 11:01:47 - socmedAPI.routers.post:59 - DEBUG    - SELECT comments.id, comments.body, comments.post_id 
+FROM comments 
+WHERE comments.post_id = :post_id_1
+[d1b1bc9d]2026-10-09 11:01:47 - uvicorn.access:482 - INFO     - 127.0.0.1:54707 - "GET /post/1 HTTP/1.1" 200
+[fa9310d4]2026-10-09 11:01:58 - uvicorn.access:482 - INFO     - 127.0.0.1:54713 - "GET /docs HTTP/1.1" 200
+[49ec170e]2026-10-09 11:01:58 - uvicorn.access:482 - INFO     - 127.0.0.1:54713 - "GET /openapi.json HTTP/1.1" 200
+[771c9730]2026-10-09 11:02:04 - socmedAPI.routers.post:18 - DEBUG    - Finding post with ID: 1
+[771c9730]2026-10-09 11:02:04 - socmedAPI.routers.post:20 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts 
+WHERE posts.id = :id_1
+[771c9730]2026-10-09 11:02:04 - socmedAPI.routers.post:53 - INFO     - Fetching comments for post ID: 1
+[771c9730]2026-10-09 11:02:04 - socmedAPI.routers.post:18 - DEBUG    - Finding post with ID: 1
+[771c9730]2026-10-09 11:02:04 - socmedAPI.routers.post:20 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts 
+WHERE posts.id = :id_1
+[771c9730]2026-10-09 11:02:04 - socmedAPI.routers.post:59 - DEBUG    - SELECT comments.id, comments.body, comments.post_id 
+FROM comments 
+WHERE comments.post_id = :post_id_1
+[771c9730]2026-10-09 11:02:04 - uvicorn.access:482 - INFO     - 127.0.0.1:52805 - "GET /post/1 HTTP/1.1" 200
+[cb47ec6b]2026-10-09 11:02:05 - socmedAPI.routers.post:18 - DEBUG    - Finding post with ID: 1
+[cb47ec6b]2026-10-09 11:02:05 - socmedAPI.routers.post:20 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts 
+WHERE posts.id = :id_1
+[cb47ec6b]2026-10-09 11:02:05 - socmedAPI.routers.post:53 - INFO     - Fetching comments for post ID: 1
+[cb47ec6b]2026-10-09 11:02:05 - socmedAPI.routers.post:18 - DEBUG    - Finding post with ID: 1
+[cb47ec6b]2026-10-09 11:02:05 - socmedAPI.routers.post:20 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts 
+WHERE posts.id = :id_1
+[cb47ec6b]2026-10-09 11:02:05 - socmedAPI.routers.post:59 - DEBUG    - SELECT comments.id, comments.body, comments.post_id 
+FROM comments 
+WHERE comments.post_id = :post_id_1
+[cb47ec6b]2026-10-09 11:02:05 - uvicorn.access:482 - INFO     - 127.0.0.1:52805 - "GET /post/1 HTTP/1.1" 200
+[918f7b7a]2026-10-09 11:02:06 - socmedAPI.routers.post:18 - DEBUG    - Finding post with ID: 1
+[918f7b7a]2026-10-09 11:02:06 - socmedAPI.routers.post:20 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts 
+WHERE posts.id = :id_1
+[918f7b7a]2026-10-09 11:02:06 - socmedAPI.routers.post:53 - INFO     - Fetching comments for post ID: 1
+[918f7b7a]2026-10-09 11:02:06 - socmedAPI.routers.post:18 - DEBUG    - Finding post with ID: 1
+[918f7b7a]2026-10-09 11:02:06 - socmedAPI.routers.post:20 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts 
+WHERE posts.id = :id_1
+[918f7b7a]2026-10-09 11:02:06 - socmedAPI.routers.post:59 - DEBUG    - SELECT comments.id, comments.body, comments.post_id 
+FROM comments 
+WHERE comments.post_id = :post_id_1
+[918f7b7a]2026-10-09 11:02:06 - uvicorn.access:482 - INFO     - 127.0.0.1:52805 - "GET /post/1 HTTP/1.1" 200
+[3708495d]2026-10-09 11:02:15 - socmedAPI.routers.post:18 - DEBUG    - Finding post with ID: 1
+[3708495d]2026-10-09 11:02:15 - socmedAPI.routers.post:20 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts 
+WHERE posts.id = :id_1
+[3708495d]2026-10-09 11:02:15 - socmedAPI.routers.post:53 - INFO     - Fetching comments for post ID: 1
+[3708495d]2026-10-09 11:02:15 - socmedAPI.routers.post:18 - DEBUG    - Finding post with ID: 1
+[3708495d]2026-10-09 11:02:15 - socmedAPI.routers.post:20 - DEBUG    - SELECT posts.id, posts.body 
+FROM posts 
+WHERE posts.id = :id_1
+[3708495d]2026-10-09 11:02:15 - socmedAPI.routers.post:59 - DEBUG    - SELECT comments.id, comments.body, comments.post_id 
+FROM comments 
+WHERE comments.post_id = :post_id_1
+[3708495d]2026-10-09 11:02:15 - uvicorn.access:482 - INFO     - 127.0.0.1:55431 - "GET /post/1 HTTP/1.1" 200
+[-]2026-10-09 11:04:29 - uvicorn.error:282 - INFO     - Shutting down
+[-]2026-10-09 11:04:29 - uvicorn.error:67 - INFO     - Waiting for application shutdown.
+[-]2026-10-09 11:04:29 - uvicorn.error:76 - INFO     - Application shutdown complete.
+[-]2026-10-09 11:04:29 - uvicorn.error:113 - INFO     - Finished server process [10276]
+{"correlation_id": "-", "asctime": "2026-10-09 11:05:54", "name": "socmedAPI.main", "lineno": 19, "levelname": "INFO", "message": "Starting up the application..."}
+{"correlation_id": "-", "asctime": "2026-10-09 11:05:54", "name": "uvicorn.error", "lineno": 62, "levelname": "INFO", "message": "Application startup complete."}
+{"correlation_id": "-", "asctime": "2026-10-09 11:31:20", "name": "uvicorn.error", "lineno": 282, "levelname": "INFO", "message": "Shutting down"}
+{"correlation_id": "-", "asctime": "2026-10-09 11:31:20", "name": "uvicorn.error", "lineno": 67, "levelname": "INFO", "message": "Waiting for application shutdown."}
+{"correlation_id": "-", "asctime": "2026-10-09 11:31:20", "name": "uvicorn.error", "lineno": 76, "levelname": "INFO", "message": "Application shutdown complete."}
+{"correlation_id": "-", "asctime": "2026-10-09 11:31:20", "name": "uvicorn.error", "lineno": 113, "levelname": "INFO", "message": "Finished server process [15152]", "color_message": "Finished server process [\u001b[36m%d\u001b[0m]"}
+{"correlation_id": "-", "asctime": "2026-10-09 11:31:23", "name": "socmedAPI.main", "lineno": 19, "levelname": "INFO", "message": "Starting up the application..."}
+{"correlation_id": "-", "asctime": "2026-10-09 11:31:23", "name": "uvicorn.error", "lineno": 62, "levelname": "INFO", "message": "Application startup complete."}
+{"correlation_id": "-", "asctime": "2026-10-09 11:34:25", "name": "uvicorn.error", "lineno": 282, "levelname": "INFO", "message": "Shutting down"}
+{"correlation_id": "-", "asctime": "2026-10-09 11:34:25", "name": "uvicorn.error", "lineno": 67, "levelname": "INFO", "message": "Waiting for application shutdown."}
+{"correlation_id": "-", "asctime": "2026-10-09 11:34:25", "name": "uvicorn.error", "lineno": 76, "levelname": "INFO", "message": "Application shutdown complete."}
+{"correlation_id": "-", "asctime": "2026-10-09 11:34:25", "name": "uvicorn.error", "lineno": 113, "levelname": "INFO", "message": "Finished server process [28332]", "color_message": "Finished server process [\u001b[36m%d\u001b[0m]"}
