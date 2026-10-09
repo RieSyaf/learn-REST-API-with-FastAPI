@@ -148,3 +148,9 @@ WHERE comments.post_id = :post_id_1
 {"correlation_id": "-", "asctime": "2026-10-09 11:34:25", "name": "uvicorn.error", "lineno": 67, "levelname": "INFO", "message": "Waiting for application shutdown."}
 {"correlation_id": "-", "asctime": "2026-10-09 11:34:25", "name": "uvicorn.error", "lineno": 76, "levelname": "INFO", "message": "Application shutdown complete."}
 {"correlation_id": "-", "asctime": "2026-10-09 11:34:25", "name": "uvicorn.error", "lineno": 113, "levelname": "INFO", "message": "Finished server process [28332]", "color_message": "Finished server process [\u001b[36m%d\u001b[0m]"}
+{"correlation_id": "-", "asctime": "2026-10-09 11:34:28", "name": "socmedAPI.main", "lineno": 19, "levelname": "INFO", "message": "Starting up the application..."}
+{"correlation_id": "-", "asctime": "2026-10-09 11:34:28", "name": "uvicorn.error", "lineno": 62, "levelname": "INFO", "message": "Application startup complete."}
+{"correlation_id": "-", "asctime": "2026-10-09 14:01:36", "name": "uvicorn.error", "lineno": 282, "levelname": "INFO", "message": "Shutting down"}
+{"correlation_id": "-", "asctime": "2026-10-09 14:01:37", "name": "uvicorn.error", "lineno": 67, "levelname": "INFO", "message": "Waiting for application shutdown."}
+{"correlation_id": "-", "asctime": "2026-10-09 14:01:37", "name": "uvicorn.error", "lineno": 76, "levelname": "INFO", "message": "Application shutdown complete."}
+{"correlation_id": "-", "asctime": "2026-10-09 14:01:37", "name": "uvicorn.error", "lineno": 113, "levelname": "INFO", "message": "Finished server process [12808]", "color_message": "Finished server process [\u001b[36m%d\u001b[0m]"}

@@ -1,6 +1,7 @@
+import httpx
+import pytest
 
 from httpx import AsyncClient
-import pytest
 
 async def create_post(body: str, async_client: AsyncClient) -> dict:
     response = await async_client.post("/post", json={"body": body})
