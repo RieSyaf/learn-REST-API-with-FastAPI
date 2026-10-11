@@ -6,4 +6,5 @@ class User(BaseModel):
 
 
 class UserIn(BaseModel):
+    email: str
     password: str
