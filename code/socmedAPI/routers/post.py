@@ -1,6 +1,8 @@
 import logging
-from fastapi import APIRouter, HTTPException
-from socmedAPI.database import database, post_table, comment_table
+from typing import Annotated
+
+from fastapi import APIRouter, Depends, HTTPException
+from socmedAPI.database import comment_table, database, post_table
 from socmedAPI.models.post import (
     Comment,
     CommentIn,
@@ -8,6 +10,8 @@ from socmedAPI.models.post import (
     UserPostIn,
     UserPostWithComments,
 )
+from socmedAPI.models.user import User
+from socmedAPI.security import get_current_user
 
 router = APIRouter()
 
@@ -22,8 +26,10 @@ async def find_post(post_id: int):
 
 
 @router.post("/post", response_model=UserPost, status_code=201)
-async def create_post(post: UserPostIn):
-    data = post.dict()
+async def create_post(
+    post: UserPostIn, current_user: Annotated[User, Depends(get_current_user)]
+):
+    data = {"body": post.body, "user_id": current_user.id}
     query = post_table.insert().values(data)
     last_record_id = await database.execute(query)
     return {**data, "id": last_record_id}
@@ -38,11 +44,13 @@ async def get_all_posts():
 
 
 @router.post("/comment", response_model=Comment, status_code=201)
-async def create_comment(comment: CommentIn):
+async def create_comment(
+    comment: CommentIn, current_user: Annotated[User, Depends(get_current_user)]
+):
     post = await find_post(comment.post_id)
     if not post:
         raise HTTPException(status_code=404, detail="Post not found")
-    data = comment.dict()
+    data = {**comment.dict(), "user_id": current_user.id}
     query = comment_table.insert().values(data)
     last_record_id = await database.execute(query)
     return {**data, "id": last_record_id}
@@ -58,6 +66,7 @@ async def get_comments_on_post(post_id: int):
     query = comment_table.select().where(comment_table.c.post_id == post_id)
     logger.debug(query)
     return await database.fetch_all(query)
+
 
 @router.get("/post/{post_id}", response_model=UserPostWithComments)
 async def get_post_with_comments(post_id: int):

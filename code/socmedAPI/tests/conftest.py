@@ -1,15 +1,15 @@
 import os
-from typing import Generator, AsyncGenerator
-import pytest
+from collections.abc import AsyncGenerator, Generator
+
 import anyio
 import httpx
-
+import pytest
 from fastapi.testclient import TestClient
 from httpx import AsyncClient
 
 os.environ["ENV_STATE"] = "test"
 
-from socmedAPI.database import database, post_table, comment_table, user_table
+from socmedAPI.database import comment_table, database, post_table, user_table
 from socmedAPI.main import app
 
 
@@ -28,7 +28,7 @@ def db() -> Generator:
     async def clear_db():
         await database.execute(post_table.delete())
         await database.execute(comment_table.delete())
-    
+
     anyio.run(clear_db)
     yield
     anyio.run(clear_db)
@@ -36,9 +36,10 @@ def db() -> Generator:
 
 @pytest.fixture()
 async def async_client(client) -> AsyncGenerator:
-    async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url=client.base_url) as ac:
+    async with httpx.AsyncClient(
+        transport=httpx.ASGITransport(app=app), base_url=client.base_url
+    ) as ac:
         yield ac
-
 
 
 @pytest.fixture()
@@ -49,3 +50,9 @@ async def registered_user(async_client: AsyncClient) -> dict:
     user = await database.fetch_one(query)
     user_details["id"] = user["id"]
     return user_details
+
+
+@pytest.fixture()
+async def logged_in_token(async_client: AsyncClient, registered_user: dict) -> str:
+    response = await async_client.post("/token", json=registered_user)
+    return response.json()["access_token"]
