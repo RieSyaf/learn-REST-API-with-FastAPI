@@ -28,6 +28,9 @@ def db() -> Generator:
     async def clear_db():
         await database.execute(post_table.delete())
         await database.execute(comment_table.delete())
+        await database.execute(user_table.delete())
+        from socmedAPI.database import like_table
+        await database.execute(like_table.delete())
 
     anyio.run(clear_db)
     yield
@@ -54,5 +57,8 @@ async def registered_user(async_client: AsyncClient) -> dict:
 
 @pytest.fixture()
 async def logged_in_token(async_client: AsyncClient, registered_user: dict) -> str:
-    response = await async_client.post("/token", json=registered_user)
+    response = await async_client.post(
+        "/token",
+        data={"username": registered_user["email"], "password": registered_user["password"]},
+    )
     return response.json()["access_token"]

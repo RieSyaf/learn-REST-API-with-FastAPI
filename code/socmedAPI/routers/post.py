@@ -1,14 +1,19 @@
 import logging
+from enum import Enum
 from typing import Annotated
 
+import sqlalchemy
 from fastapi import APIRouter, Depends, HTTPException
-from socmedAPI.database import comment_table, database, post_table
+from socmedAPI.database import comment_table, database, like_table, post_table
 from socmedAPI.models.post import (
     Comment,
     CommentIn,
+    PostLike,
+    PostLikeIn,
     UserPost,
     UserPostIn,
     UserPostWithComments,
+    UserPostWithLikes,
 )
 from socmedAPI.models.user import User
 from socmedAPI.security import get_current_user
@@ -16,6 +21,12 @@ from socmedAPI.security import get_current_user
 router = APIRouter()
 
 logger = logging.getLogger(__name__)
+
+select_post_and_likes = (
+    sqlalchemy.select(post_table, sqlalchemy.func.count(like_table.c.id).label("likes"))
+    .select_from(post_table.outerjoin(like_table))
+    .group_by(post_table.c.id)
+)
 
 
 async def find_post(post_id: int):
@@ -35,10 +46,22 @@ async def create_post(
     return {**data, "id": last_record_id}
 
 
-@router.get("/post", response_model=list[UserPost])
-async def get_all_posts():
+class PostSorting(str, Enum):
+    new = "new"
+    old = "old"
+    most_likes = "most_likes"
+
+
+@router.get("/post", response_model=list[UserPostWithLikes])
+async def get_all_posts(sorting: PostSorting = PostSorting.new):
     logger.info("Fetching all posts")
-    query = post_table.select()
+    if sorting == PostSorting.new:
+        query = select_post_and_likes.order_by(post_table.c.id.desc())  # th
+    elif sorting == PostSorting.old:
+        query = select_post_and_likes.order_by(post_table.c.id.asc())
+    elif sorting == PostSorting.most_likes:
+        query = select_post_and_likes.order_by(sqlalchemy.desc("likes"))
+
     logger.debug(query)
     return await database.fetch_all(query)
 
@@ -70,7 +93,9 @@ async def get_comments_on_post(post_id: int):
 
 @router.get("/post/{post_id}", response_model=UserPostWithComments)
 async def get_post_with_comments(post_id: int):
-    post = await find_post(post_id)
+    query = select_post_and_likes.where(post_table.c.id == post_id)
+
+    post = await database.fetch_one(query)
     if not post:
         logger.error(f"Post with ID {post_id} not found.")
         raise HTTPException(status_code=404, detail="Post not found")
@@ -79,3 +104,28 @@ async def get_post_with_comments(post_id: int):
         "post": post,
         "comments": await get_comments_on_post(post_id),
     }
+
+
+@router.post("/like", response_model=PostLike, status_code=201)
+async def like_post(
+    like: PostLikeIn, current_user: Annotated[User, Depends(get_current_user)]
+):
+    logger.info("Liking post")
+    post = await find_post(like.post_id)
+    if not post:
+        raise HTTPException(status_code=404, detail="Post not found")
+
+    # # Check if the user has already liked the post
+    # query = like_table.select().where(
+    #     (like_table.c.post_id == like.post_id)
+    #     & (like_table.c.user_id == current_user.id)
+    # )
+    # existing_like = await database.fetch_one(query)
+    # if existing_like:
+    #     raise HTTPException(status_code=400, detail="Post already liked by this user")
+
+    data = {**like.dict(), "user_id": current_user.id}
+    query = like_table.insert().values(data)
+    logger.debug(query)
+    last_record_id = await database.execute(query)
+    return {**data, "id": last_record_id}
