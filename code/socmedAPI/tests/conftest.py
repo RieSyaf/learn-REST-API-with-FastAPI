@@ -7,10 +7,12 @@ import pytest
 from fastapi.testclient import TestClient
 from httpx import AsyncClient
 
+
 os.environ["ENV_STATE"] = "test"
 
 from socmedAPI.database import comment_table, database, post_table, user_table
 from socmedAPI.main import app
+from socmedAPI.tests.helpers import create_post 
 
 
 @pytest.fixture(scope="session")
@@ -73,3 +75,29 @@ async def logged_in_token(async_client: AsyncClient, confirmed_user: dict) -> st
         data={"username": confirmed_user["email"], "password": confirmed_user["password"]},
     )
     return response.json()["access_token"]
+
+
+@pytest.fixture()
+def mock_httpx_client(mocker):
+    mock = mocker.patch("socmedAPI.tasks.httpx.AsyncClient", autospec=True)
+    mock.return_value.__aenter__.return_value = mock.return_value
+    return mock.return_value
+
+
+@pytest.fixture()
+async def user_for_tasks(mock_httpx_client):
+    user_details = {"email": "tasktest@example.com", "password": "1234", "id": 1}
+    query = user_table.insert().values(
+        email=user_details["email"],
+        password=user_details["password"],
+        confirmed=True
+    )
+    user_id = await database.execute(query)
+    user_details["id"] = user_id
+    return user_details
+
+
+
+@pytest.fixture()
+async def created_post(async_client: AsyncClient, logged_in_token: str):
+    return await create_post("Test post", async_client, logged_in_token)

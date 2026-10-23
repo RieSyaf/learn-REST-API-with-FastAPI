@@ -7,6 +7,10 @@ import os
 class GlobalSettings(BaseSettings):
     DATABASE_URL: Optional[str] = None
     DB_FORCE_ROLLBACK: bool = False
+    B2_KEY_ID: Optional[str] = None
+    B2_APPLICATION_KEY: Optional[str] = None
+    B2_BUCKET_NAME: Optional[str] = None
+    DEEPAI_API_KEY: Optional[str] = None
 
 
 class DevConfig(GlobalSettings):

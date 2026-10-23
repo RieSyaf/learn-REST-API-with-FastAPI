@@ -7,6 +7,7 @@ from asgi_correlation_id import CorrelationIdMiddleware
 import logging
 
 from socmedAPI.routers.post import router as post_router
+from socmedAPI.routers.upload import router as upload_router
 from socmedAPI.database import database
 from socmedAPI.logging_conf import configure_logging
 from socmedAPI.routers.user import router as user_router
@@ -28,6 +29,7 @@ app = FastAPI(lifespan=lifespan, title="Social Media API", description="A simple
 app.add_middleware(CorrelationIdMiddleware)
 
 app.include_router(post_router)
+app.include_router(upload_router)
 app.include_router(user_router)
 
 @app.exception_handler(HTTPException)

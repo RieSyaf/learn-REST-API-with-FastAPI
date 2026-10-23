@@ -12,3 +12,6 @@ python-jose
 python-multipart
 passlib[bcrypt]
 pytest-asyncio
+aiofiles
+b2sdk
+pyfakefs
