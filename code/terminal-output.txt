@@ -1,0 +1,2 @@
+TODO: Fix typo in socmedAPI/routers/post.py line 52
+Change "get_post_with_commnets" to "get_post_with_comments"

@@ -3,8 +3,9 @@ from enum import Enum
 from typing import Annotated
 
 import sqlalchemy
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks, Request
 from socmedAPI.database import comment_table, database, like_table, post_table
+from socmedAPI.tasks import generate_and_add_to_post
 from socmedAPI.models.post import (
     Comment,
     CommentIn,
@@ -38,11 +39,20 @@ async def find_post(post_id: int):
 
 @router.post("/post", response_model=UserPost, status_code=201)
 async def create_post(
-    post: UserPostIn, current_user: Annotated[User, Depends(get_current_user)]
+    post: UserPostIn, current_user: Annotated[User, Depends(get_current_user)], background_tasks: BackgroundTasks, request: Request, prompt: str = None
 ):
     data = {"body": post.body, "user_id": current_user.id}
     query = post_table.insert().values(data)
     last_record_id = await database.execute(query)
+    if prompt:
+        background_tasks.add_task(
+            generate_and_add_to_post,
+            current_user.email,
+            last_record_id,
+            request.url_for("get_post_with_comments", post_id=last_record_id),
+            database,
+            prompt,
+        )
     return {**data, "id": last_record_id}
 
 
@@ -73,7 +83,7 @@ async def create_comment(
     post = await find_post(comment.post_id)
     if not post:
         raise HTTPException(status_code=404, detail="Post not found")
-    data = {**comment.dict(), "user_id": current_user.id}
+    data = {**commentmodel_dump()), "user_id": current_user.id}
     query = comment_table.insert().values(data)
     last_record_id = await database.execute(query)
     return {**data, "id": last_record_id}
@@ -124,7 +134,7 @@ async def like_post(
     # if existing_like:
     #     raise HTTPException(status_code=400, detail="Post already liked by this user")
 
-    data = {**like.dict(), "user_id": current_user.id}
+    data = {**likemodel_dump()), "user_id": current_user.id}
     query = like_table.insert().values(data)
     logger.debug(query)
     last_record_id = await database.execute(query)

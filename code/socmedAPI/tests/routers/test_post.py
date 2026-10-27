@@ -5,6 +5,14 @@ from socmedAPI import security
 from socmedAPI.tests.helpers import create_post, create_comment, like_post
 
 
+@pytest.fixture()
+def mock_generate_cute_creature_api(mocker):
+    return mocker.patch(
+        "socmedAPI.tasks._generate_cute_creature_api",
+        return_value={"output_url": "http://example.net/image.jpg"},
+    )
+
+
 
 
 
@@ -36,6 +44,25 @@ async def test_create_post(
         "image_url": None,
     }.items() <= response.json().items()
 
+
+@pytest.mark.anyio
+async def test_create_post_with_prompt(
+    async_client: AsyncClient, logged_in_token: str, confirmed_user: dict, mock_generate_cute_creature_api
+):
+    body = "Test post"
+    response = await async_client.post(
+        "/post?prompt= a cat",
+        json={"body": body},
+        headers={"Authorization": f"Bearer {logged_in_token}"},
+    )
+    assert response.status_code == 201
+    assert {
+        "id": 1,
+        "body": body,
+        "user_id": confirmed_user["id"],
+        "image_url": None,
+    }.items() <= response.json().items()
+    mock_generate_cute_creature_api.assert_called()
 
 @pytest.mark.anyio
 async def test_create_post_expired_token(
